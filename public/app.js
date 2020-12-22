@@ -6,7 +6,7 @@ const socket = io(SIGNALING_SERVER_URL, {
   autoConnect: false,
 });
 
-socket.on('data', (data) => {
+socket.on('data', data => {
   handleSignalingData(data);
 });
 
@@ -20,13 +20,13 @@ socket.on('hello', sid => {
   showHappyMessage('Connected');
 });
 
-socket.on('ready', (data) => {
+socket.on('ready', () => {
   console.log('Ready');
   createPeerConnection();
   sendOffer();
 });
 
-let sendData = (data) => {
+function sendData(data) {
   socket.emit('data', data);
 };
 
@@ -173,20 +173,22 @@ function hideAllMessages() {
   sadMessageBox.style.display = 'none';
 }
 
+function handleStartMeetingClick() {
+  const meetingId = generateMeetingId();
+  inputDisplayMeetingId.value = meetingId;
+  joinMeeting(meetingId);
+  sessionMeetingId = meetingId;
+}
+
+function handleJoinMeetingClick() {
+  const meetingId = inputEnterMeetingId.value;
+  joinMeeting(meetingId);
+  sessionMeetingId = meetingId;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   getLocalStream();
 
-  btnStartNewMeeting.addEventListener('click', function() {
-    const meetingId = generateMeetingId();
-    inputDisplayMeetingId.value = meetingId;
-    joinMeeting(meetingId);
-    sessionMeetingId = meetingId;
-  });
-
-  btnJoinMeeting.addEventListener('click', function() {
-    const meetingId = inputEnterMeetingId.value;
-    console.log('meetingId', meetingId);
-    joinMeeting(meetingId);
-    sessionMeetingId = meetingId;
-  });
+  btnStartNewMeeting.addEventListener('click', handleStartMeetingClick);
+  btnJoinMeeting.addEventListener('click', handleJoinMeetingClick);
 })
