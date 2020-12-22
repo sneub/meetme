@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Start a new meeting</title>
+
+    <!-- <script defer src="/__/firebase/8.2.1/firebase-app.js"></script>
+    <script defer src="/__/firebase/8.2.1/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script> -->
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>meetme.cx</h1>
+
+      <div id="media">
+        <div class="stream-box">
+          <video id="local-stream" muted autoplay playsinline></video>
+        </div>  
+        <div class="stream-box">
+          <video id="remote-stream" muted autoplay playsinline></video>
+        </div>
+      </div>
+
+      <div id="controls">
+        <button id="btn-start-meeting">
+          Start a meeting
+        </button>
+        <input type="text" id="display-meeting-id" placeholder="" style="border: 0px;" disabled />
+        <br />
+        <button id="btn-join-meeting">
+          Join a meeting
+        </button>
+        <input type="text" id="input-meeting-id" placeholder="Meeting ID" />
+      </div>
+
+      <div id="message"></div>
+    </div>
+    <!-- <div id="state-message">
+      <div id="state-message-ice-connection">ICE Connection:</div>
+      <div id="state-message-ice-gathering">ICE Gathering:</div>
+      <div id="state-message-signalling">Signal State:</div>
+      <div id="state-message-connection">Connection State:</div>
+    </div> -->
+
+    <p id="little-message">meetme.cx</p>
+
+    <script src="socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
