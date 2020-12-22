@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "buildImage": "gcloud builds submit --project meetme-299315 --tag gcr.io/meetme-299315/signal",
+    "deployToCloud": "gcloud run deploy --project meetme-299315 --image gcr.io/meetme-299315/signal --platform managed",
+    "deploy": "npm run buildImage && npm run deployToCloud"
   },
   "keywords": [],
   "author": "",

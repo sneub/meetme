@@ -20,7 +20,7 @@
           <video id="local-stream" muted autoplay playsinline></video>
         </div>  
         <div class="stream-box">
-          <video id="remote-stream" muted autoplay playsinline></video>
+          <video id="remote-stream" autoplay playsinline></video>
         </div>
       </div>
 
@@ -38,14 +38,18 @@
 
       <div id="message"></div>
     </div>
-    <!-- <div id="state-message">
-      <div id="state-message-ice-connection">ICE Connection:</div>
-      <div id="state-message-ice-gathering">ICE Gathering:</div>
-      <div id="state-message-signalling">Signal State:</div>
-      <div id="state-message-connection">Connection State:</div>
-    </div> -->
 
     <p id="little-message">meetme.cx</p>
+
+    <div id="happy-message" class="message-box">
+      Test
+    </div>
+    <div id="indifferent-message" class="message-box">
+      Test
+    </div>
+    <div id="sad-message" class="message-box">
+      Test
+    </div>
 
     <script src="socket.io.js"></script>
     <script src="app.js"></script>
